@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package win.roto.mcplugin.tinthealth
 
 import com.github.yannicklamprecht.worldborder.api.Position
