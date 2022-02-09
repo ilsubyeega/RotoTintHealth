@@ -18,8 +18,7 @@ import kotlin.math.roundToInt
 
 class Main : JavaPlugin(), Listener {
 
-    private var worldBorderApi: WorldBorderApi? = null
-    private var plugin: JavaPlugin = this
+    private lateinit var worldBorderApi: WorldBorderApi
     private var task = -1
 
     private var borderEnabled = false
@@ -33,8 +32,6 @@ class Main : JavaPlugin(), Listener {
             return
         }
         worldBorderApi = worldBorderApiRegisteredServiceProvider.provider
-
-        plugin = this
 
         server.pluginManager.registerEvents(this, this)
         task = server.scheduler.scheduleSyncRepeatingTask(this, borderTask, 0, 1)
@@ -87,7 +84,7 @@ class Main : JavaPlugin(), Listener {
      *  Fired when a player joins the server or changes worlds.
      */
     private fun initBorder(player: Player) {
-        val worldBorder = worldBorderApi!!.getWorldBorder(player)
+        val worldBorder = worldBorderApi.getWorldBorder(player)
         worldBorder.center(Position(player.location.x, player.location.z))
         worldBorder.size(Double.MAX_VALUE)
         worldBorder.send(player, WorldBorderAction.INITIALIZE)
@@ -110,7 +107,7 @@ class Main : JavaPlugin(), Listener {
         //val warnDistance = (80000 + (-6000 * percentage) + 600000).roundToInt()
 
         val warnDistance = (100000 + (-6000 * percentage) + 600000).roundToInt()
-        val worldBorder = worldBorderApi!!.getWorldBorder(player)
+        val worldBorder = worldBorderApi.getWorldBorder(player)
 
         worldBorder.center(Position(player.location.x, player.location.z))
         worldBorder.warningDistanceInBlocks(warnDistance)
@@ -125,7 +122,7 @@ class Main : JavaPlugin(), Listener {
      *  Changes the player's worldborder to the default world's worldborder.
      */
     private fun resetBorder(player: Player) {
-        worldBorderApi!!.resetWorldBorderToGlobal(player)
+        worldBorderApi.resetWorldBorderToGlobal(player)
     }
 
     @EventHandler
