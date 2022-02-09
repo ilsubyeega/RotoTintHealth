@@ -65,7 +65,7 @@ class Main : JavaPlugin(), Listener {
             playerHealthList.keys.retainAll(onlinePlayersUUID)
 
             for (player in onlinePlayers) {
-                if (!playerHealthList.contains(player.uniqueId) || playerHealthList[player.uniqueId] != player.health){
+                if (!playerHealthList.contains(player.uniqueId) || playerHealthList[player.uniqueId] != player.health) {
                     updateBorder(player)
                     playerHealthList[player.uniqueId] = player.health
                 }
@@ -114,7 +114,7 @@ class Main : JavaPlugin(), Listener {
 
         worldBorder.center(Position(player.location.x, player.location.z))
         worldBorder.warningDistanceInBlocks(warnDistance)
-        worldBorder.lerp(200000.0,200000.0, 4000)
+        worldBorder.lerp(200000.0, 200000.0, 4000)
 
         worldBorder.send(player, WorldBorderAction.SET_CENTER)
         worldBorder.send(player, WorldBorderAction.LERP_SIZE)
@@ -124,7 +124,7 @@ class Main : JavaPlugin(), Listener {
     /**
      *  Changes the player's worldborder to the default world's worldborder.
      */
-    private fun resetBorder(player: Player){
+    private fun resetBorder(player: Player) {
         worldBorderApi!!.resetWorldBorderToGlobal(player)
     }
 
@@ -134,7 +134,7 @@ class Main : JavaPlugin(), Listener {
     }
 
     @EventHandler
-    fun onPlayerChangedWorld(event: PlayerChangedWorldEvent){
+    fun onPlayerChangedWorld(event: PlayerChangedWorldEvent) {
         initBorder(event.player)
     }
 
@@ -166,7 +166,7 @@ class Main : JavaPlugin(), Listener {
                 }
                 "sethp" -> {
                     if (sender is Player) {
-                        if (args[1].isNotEmpty()){
+                        if (args[1].isNotEmpty()) {
                             try {
                                 val hp = args[1].toDouble()
                                 sender.health = hp
