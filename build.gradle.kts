@@ -9,25 +9,28 @@ plugins {
     id("com.github.gmazzo.buildconfig") version "3.0.0"
 }
 
-group = "org.example"
+group = "win.roto.mcplugin.tinthealth"
 version = "1.0.0"
 
 repositories {
     maven(url = "https://papermc.io/repo/repository/maven-public/")
+    maven(url = "https://eldonexus.de/repository/maven-releases/")
 }
 
 val minecraft_version: String by project
 
 dependencies {
     // PaperMC Dependency
-    compileOnly("com.destroystokyo.paper", "paper-api", "$minecraft_version-R0.1-SNAPSHOT")
-
+    compileOnly("io.papermc.paper", "paper-api", "$minecraft_version-R0.1-SNAPSHOT")
+    compileOnly("com.github.yannicklamprecht:worldborderapi:1.180.0")
     // Add your dependencies here
     // Examples
     // implementation("io.ktor", "ktor-client", "1.4.0") // Would be shaded into the final jar
     // compileOnly("io.ktor", "ktor-client", "1.4.0") // Only used on compile time
 }
-
+java {
+    toolchain.languageVersion.set(JavaLanguageVersion.of(17))
+}
 buildConfig {
     className("BuildConfig")
     packageName("$group.$name")

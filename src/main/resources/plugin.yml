@@ -1,6 +1,27 @@
-name: ExamplePlugin
-api-version: 1.16
-authors:
-  - Me
-main: com.example.exampleplugin
+name: RotoTintHealth
+
+main: win.roto.mcplugin.tinthealth.Main
+api-version: 1.18
+
+author: roto.win
+description: Shows red vignette aka border warning status with health points.
 version: @version@
+website: roto.win
+depend:
+  - WorldBorderAPI
+
+commands:
+  tinthealth:
+    description: Main command of RotoTintHealth
+    usage: "Usage: /tinthealth [enable/disable/sethp]"
+    aliases:
+      - rototinthealth
+      - rototh
+      - rttinthealth
+    permission: roto.tinthealth.manage
+    permission-message: §cYou do not have access to use this command.
+
+permissions:
+  roto.tinthealth.manage:
+    description: Allow to use RotoTintHealth plugin command.
+    default: op
