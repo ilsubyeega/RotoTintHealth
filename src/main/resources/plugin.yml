@@ -13,11 +13,12 @@ depend:
 commands:
   tinthealth:
     description: Main command of RotoTintHealth
-    usage: "Usage: /tinthealth [enable/disable/sethp]"
+    usage: "Usage: /tinthealth [enable/disable/setHp]"
     aliases:
       - rototinthealth
       - rototh
       - rttinthealth
+      - tint-health
     permission: roto.tinthealth.manage
     permission-message: §cYou do not have access to use this command.
 

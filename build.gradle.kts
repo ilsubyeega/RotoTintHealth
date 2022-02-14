@@ -10,7 +10,7 @@ plugins {
 }
 
 group = "win.roto.mcplugin.tinthealth"
-version = "1.0.0"
+version = "1.0.1"
 
 repositories {
     maven(url = "https://papermc.io/repo/repository/maven-public/")
